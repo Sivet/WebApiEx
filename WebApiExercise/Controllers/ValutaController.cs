@@ -9,7 +9,7 @@ namespace WebApiExercise.Controllers
 {
     public class ValutaController : ApiController
     {
-        //Models.RepoConversions ConRepo = new Models.RepoConversions();
+        
         [HttpGet]
         public double ConvertCurrency(double amount, string isoFrom, string isoTo)
         {
