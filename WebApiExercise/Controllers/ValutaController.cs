@@ -9,17 +9,21 @@ namespace WebApiExercise.Controllers
 {
     public class ValutaController : ApiController
     {
-        
+        private List<Models.Conversion> conversionList;
         [HttpGet]
         public double ConvertCurrency(double amount, string isoFrom, string isoTo)
         {
-            return new Models.Calculator().ConvertCurrency(amount, isoFrom, isoTo);
+            double result = new Models.Calculator().ConvertCurrency(amount, isoFrom, isoTo);
+            
+            return result;
         }
         [HttpGet]
-        public List<Models.Currency> GetList()
+        [ActionName("CurrencyListe")]
+        public List<Models.Currency> GetCurrencyList()
         {
             return new Models.CurrencyMaker().GetList();
         }
+        
         [HttpPut]
         public void ChangeExchangeRate(string name, string iso, double exchangerate)
         {
