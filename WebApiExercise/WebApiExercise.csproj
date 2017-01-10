@@ -122,7 +122,6 @@
     <Compile Include="Models\Conversion.cs" />
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\CurrencyMaker.cs" />
-    <Compile Include="Models\RepoConversions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
