@@ -25,6 +25,11 @@ namespace WebApiExercise.Controllers
         {
             new Models.CurrencyMaker().ChangeExchangeRate(name, iso, exchangerate);
         }
+        [HttpDelete]
+        public void DeleteExchangeRate(string iso)
+        {
+            new Models.CurrencyMaker().DeleteExchangeRate(iso);
+        }
 
     }
 }

@@ -66,20 +66,18 @@ namespace WebApiExercise.Models
         }
         public void ChangeExchangeRate(string name, string iso, double exchangerate)
         {
-            bool exits = false;
+            bool exists = false;
             Monitor.Enter(CurrencyListe);
             try
             {
-                foreach (Currency item in CurrencyListe)
+                if (FindCurrency(iso) != null)
                 {
-                    if (item.iso == iso)
-                    {
-                        exits = true;
-                        item.name = name;
-                        item.exchangeRate = exchangerate;
-                    }
+                    exists = true;
+                    FindCurrency(iso).name = name;
+                    FindCurrency(iso).exchangeRate = exchangerate;
                 }
-                if (exits == false)
+
+                if (exists == false)
                 {
                     MakeNewCurrency(name, iso, exchangerate);
                 }
@@ -93,6 +91,39 @@ namespace WebApiExercise.Models
                 Monitor.Exit(CurrencyListe);
             }
 
+        }
+        public void DeleteExchangeRate(string iso)
+        {
+            Monitor.Enter(CurrencyListe);
+            try
+            {
+                if (FindCurrency(iso) != null)
+                {
+                    CurrencyListe.Remove(FindCurrency(iso));
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Monitor.Exit(CurrencyListe);
+            }
+
+
+        }
+        public Currency FindCurrency(string iso)
+        {
+            foreach (Currency item in GetList())
+            {
+                if (item.iso == iso)
+                {
+                    return item;
+                }
+            }
+
+            return null;
         }
 
         private void FillList()
