@@ -20,6 +20,11 @@ namespace WebApiExercise.Controllers
         {
             return new Models.CurrencyMaker().GetList();
         }
-       
+        [HttpPut]
+        public void ChangeExchangeRate(string name, string iso, double exchangerate)
+        {
+            new Models.CurrencyMaker().ChangeExchangeRate(name, iso, exchangerate);
+        }
+
     }
 }
