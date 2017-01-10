@@ -8,7 +8,6 @@ namespace WebApiExercise.Models
 {
     public class CurrencyMaker
     {
-
         static private List<Currency> CurrencyListe;
         static private object obj = new object();
 
