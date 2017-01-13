@@ -9,7 +9,6 @@ namespace WebApiExercise.Controllers
 {
     public class ValutaController : ApiController
     {
-        private List<Models.Conversion> conversionList;
         [HttpGet]
         public double ConvertCurrency(double amount, string isoFrom, string isoTo)
         {
